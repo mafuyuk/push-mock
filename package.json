@@ -6,7 +6,7 @@
   "author": "mafuyuk <mafuyuk.m@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "devserver": "./node_modules/.bin/webpack-dev-server --color",
+    "devserver": "./node_modules/.bin/webpack-dev-server",
     "lint": "./node_modules/.bin/eslint ./src",
     "test": "mocha -r babel-register"
   },

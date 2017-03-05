@@ -20,6 +20,7 @@ module.exports = {
     devServer: {
         contentBase: 'dest',
         inline: true,
+        hot: true,
         port: 8000,
         host: 'localhost',
     },
