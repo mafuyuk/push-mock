@@ -5,5 +5,7 @@
 import { requestPushEnable, registerServiceWorker, pushDemo } from './webpush';
 
 requestPushEnable();
-registerServiceWorker();
+
 console.log(pushDemo());
+
+registerServiceWorker();

@@ -44,7 +44,7 @@ export function pushDemo() {
             body: '本文',
             icon: '/icon.png',
             data: {
-                foo: 'データ',
+                url: '/manifest.json',
             },
         },
     );
