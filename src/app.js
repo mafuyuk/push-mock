@@ -15,10 +15,7 @@ function requestPushEnable() {
     });
 }
 
-export function Add(x, y) {
-    return x + y;
-}
-
+// ServiceWorkerの登録
 function registerServiceWorker() {
     // ServiceWorker未実装のブラウザでは登録を中断する
     if (!('serviceWorker' in navigator)) {

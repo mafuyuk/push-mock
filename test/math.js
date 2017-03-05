@@ -1,7 +1,7 @@
 import assert from "assert"
-import { Add } from "../src/app.js"
+import Add from "../src/math.js"
 
-describe("app", () => {
+describe("math", () => {
 
     describe(".add(x, y)", () => {
         it("should return 3 when given 1 and 2", () => {
