@@ -11,6 +11,7 @@ If has not yarn. `$ brew install yarn`
 ```
 $ yarn run devserver
 $ yarn run lint
+$ yarn run test
 ```
 
 Use Airbnb ESLint style check
