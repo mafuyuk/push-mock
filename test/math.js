@@ -1,3 +1,7 @@
+/**
+ * Created by mafuyuk on 2017/03/05.
+ */
+
 import assert from "assert"
 import Add from "../src/math.js"
 
