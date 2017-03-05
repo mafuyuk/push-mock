@@ -5,13 +5,13 @@ module.exports = {
     context: path.resolve(__dirname, './src'),
 
     entry: {
-        app: './app.js',
+        bundle: './app.js',
         sw: './sw.js'
     },
 
     output: {
         path: path.resolve(__dirname, './dest'),
-        filename: 'bundle.js',
+        filename: '[name].js',
     },
 
     devServer: {

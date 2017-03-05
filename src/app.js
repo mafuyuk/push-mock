@@ -26,20 +26,11 @@ function registerServiceWorker() {
     navigator.serviceWorker.register('/sw.js', {
         scope: '/',
     }).then((registration) => {
-        console.info('Successfully registered ServiceWorker.');
-
-        registration.onupdatefound = updateEvent => {
-            registration.installing.onstatechange = () => {
-                if (this.state === 'installed') {
-                    if (registration.active) {
-                        console.info('SW has been Updated.');
-                    } else {
-                        console.info('SW has been Installed.');
-                    }
-                }
-            };
-        };
-    }).catch(err => {
+        console.info(`Successfully registered ServiceWorker.: ${registration}`);
+    }).catch((err) => {
         console.error(err);
     });
 }
+
+requestPushEnable();
+registerServiceWorker();
