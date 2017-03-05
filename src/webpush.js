@@ -1,5 +1,9 @@
+/**
+ * Created by mafuyuk on 2017/03/05.
+ */
+
 // 通知の可否
-function requestPushEnable() {
+export function requestPushEnable() {
     Notification.requestPermission().then((permission) => {
         // Notificaiton.permissionにも引数と同じ値が格納されている
         if (permission === 'granted') {
@@ -16,7 +20,7 @@ function requestPushEnable() {
 }
 
 // ServiceWorkerの登録
-function registerServiceWorker() {
+export function registerServiceWorker() {
     // ServiceWorker未実装のブラウザでは登録を中断する
     if (!('serviceWorker' in navigator)) {
         console.error('ServiceWorker is not available');
@@ -32,5 +36,16 @@ function registerServiceWorker() {
     });
 }
 
-requestPushEnable();
-registerServiceWorker();
+// Push取得時のDEMO
+export function pushDemo() {
+    return new Notification(
+        'タイトル',
+        {
+            body: '本文',
+            icon: '/icon.png',
+            data: {
+                foo: 'データ',
+            },
+        },
+    );
+}

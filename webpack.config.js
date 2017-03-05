@@ -5,7 +5,10 @@ module.exports = {
     context: path.resolve(__dirname, './src'),
 
     entry: {
-        bundle: './app.js',
+        bundle: [
+            './webpush.js',
+            './index.js',
+        ],
         sw: './sw.js'
     },
 
