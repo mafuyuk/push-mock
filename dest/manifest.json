@@ -1,0 +1,7 @@
+{
+  "short_name": "mock",
+  "name": "mock",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+}

@@ -17,4 +17,32 @@ function requestPushEnable() {
 
 export function Add(x, y) {
     return x + y;
-};
+}
+
+function registerServiceWorker() {
+    // ServiceWorker未実装のブラウザでは登録を中断する
+    if (!('serviceWorker' in navigator)) {
+        console.error('ServiceWorker is not available');
+        return;
+    }
+
+    navigator.serviceWorker.register('/sw.js', {
+        scope: '/',
+    }).then((registration) => {
+        console.info('Successfully registered ServiceWorker.');
+
+        registration.onupdatefound = updateEvent => {
+            registration.installing.onstatechange = () => {
+                if (this.state === 'installed') {
+                    if (registration.active) {
+                        console.info('SW has been Updated.');
+                    } else {
+                        console.info('SW has been Installed.');
+                    }
+                }
+            };
+        };
+    }).catch(err => {
+        console.error(err);
+    });
+}

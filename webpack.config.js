@@ -6,6 +6,7 @@ module.exports = {
 
     entry: {
         app: './app.js',
+        sw: './sw.js'
     },
 
     output: {
