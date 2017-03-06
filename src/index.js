@@ -2,10 +2,10 @@
  * Created by mafuyuk on 2017/03/05.
  */
 
-import { requestPushEnable, registerServiceWorker, pushDemo } from './webpush';
+import WebPush from './webpush';
 
-requestPushEnable();
+WebPush.requestPushEnable();
 
-console.log(pushDemo());
+console.log(WebPush.pushDemo());
 
-registerServiceWorker();
+WebPush.registerServiceWorker();
