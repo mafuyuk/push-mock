@@ -3,18 +3,17 @@
  */
 import assert from "power-assert"
 import sinon from "sinon"
-
 import WebPush from "../src/webpush"
 
 describe("webpush", () => {
 
     describe(".requestPushEnable()", () => {
-        var stub = sinon.stub(WebPush, "requestPushEnable");
-        stub.withArgs("hello").returns(true);
-        stub.withArgs("goodbye").returns(false);
+        console.log(window);
+        let granted = sinon.createStubInstance(window.Notification, "requestPermission");
+        granted.returns('granted');
 
         it("should return granted when push enable", () => {
-            assert.equal(requestPushEnable(), granted);
+            assert.equal(WebPush.requestPushEnable() === 'granted');
         });
     });
 });
