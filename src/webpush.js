@@ -5,28 +5,22 @@
 export default class WebPush {
     // 通知の可否
     static requestPushEnable = () => {
-        Notification.requestPermission().then((permission) => {
-            // Notificaiton.permissionにも引数と同じ値が格納されている
-            if (permission === 'granted') {
-                // 許可された場合
-                console.log('許可されました');
-            } else if (permission === 'denied') {
-                // ブロックされた場合
-                console.log('ブロックされました');
-            } else if (permission === 'default') {
-                // 無視されました
-                console.log('無視されました');
-            }
-            return permission;
-        });
+        Notification.requestPermission()
+            .then((permission) => {
+                // Notificaiton.permissionにも引数と同じ値が格納されている
+                if (permission !== 'granted') {
+                    // 許可された場合
+                    Promise.reject('許可されませんでした');
+                }
+                Promise.resolve(permission);
+            });
     }
 
     // ServiceWorkerの登録
     static registerServiceWorker = () => {
         // ServiceWorker未実装のブラウザでは登録を中断する
         if (!('serviceWorker' in navigator)) {
-            console.error('ServiceWorker is not available');
-            return;
+            Promise.reject('ServiceWorker is not available');
         }
 
         navigator.serviceWorker.register('/sw.js', {
@@ -36,10 +30,13 @@ export default class WebPush {
         }).catch((err) => {
             console.error(err);
         });
+
+        Promise.resolve(navigator.serviceWorker.ready);
     }
 
     // Push取得時のDEMO
     static pushDemo = () => {
+        console.log('DEMO');
         return new Notification(
             'タイトル',
             {

@@ -4,8 +4,11 @@
 
 import WebPush from './webpush';
 
-WebPush.requestPushEnable();
+WebPush.registerServiceWorker()
+    .then(WebPush.requestPushEnable)
+    .catch((error) => {
+        console.info(error);
+    });
+
 
 console.log(WebPush.pushDemo());
-
-WebPush.registerServiceWorker();
