@@ -4,7 +4,7 @@
 
 export default class WebPush {
     // 通知の可否
-    static requestPushEnable = () => {
+    static requestPushEnable() {
         Notification.requestPermission()
             .then((permission) => {
                 // Notificaiton.permissionにも引数と同じ値が格納されている
@@ -17,25 +17,27 @@ export default class WebPush {
     }
 
     // ServiceWorkerの登録
-    static registerServiceWorker = () => {
-        // ServiceWorker未実装のブラウザでは登録を中断する
-        if (!('serviceWorker' in navigator)) {
-            Promise.reject('ServiceWorker is not available');
-        }
+    static registerServiceWorker() {
+        return new Promise((resolve, reject) => {
+            // ServiceWorker未実装のブラウザでは登録を中断する
+            if (!('serviceWorker' in navigator)) {
+                reject('ServiceWorker is not available');
+            }
 
-        navigator.serviceWorker.register('/sw.js', {
-            scope: '/',
-        }).then((registration) => {
-            console.info(`Successfully registered ServiceWorker.: ${registration}`);
-        }).catch((err) => {
-            console.error(err);
+            navigator.serviceWorker.register('/sw.js', {
+                scope: '/',
+            }).then((registration) => {
+                console.info(`Successfully registered ServiceWorker.: ${registration}`);
+                resolve(navigator.serviceWorker.ready);
+            }).catch((err) => {
+                console.error(err);
+                reject(err);
+            });
         });
-
-        Promise.resolve(navigator.serviceWorker.ready);
     }
 
     // Push取得時のDEMO
-    static pushDemo = () => {
+    static pushDemo() {
         console.log('DEMO');
         return new Notification(
             'タイトル',
