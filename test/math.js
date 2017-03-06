@@ -3,7 +3,7 @@
  */
 
 import assert from "power-assert"
-import Add from "../src/math.js"
+import Add from "../src/math"
 
 describe("math", () => {
 
