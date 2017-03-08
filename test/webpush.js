@@ -3,17 +3,31 @@
  */
 import assert from "power-assert"
 import sinon from "sinon"
+
 import WebPush from "../src/webpush"
 
 describe("webpush", () => {
+    const orgWindow = window;
+    beforeEach(() => {
+
+        window = Object.assign({}, {
+            ...window,
+            Notification: {
+                requestPermission: () => {},
+            },
+        });
+    });
+
+    afterEach(() => {
+        // windowをNotificationを追加する前の状態に戻す
+        window = Object.assign({}, orgWindow);
+    });
 
     describe(".requestPushEnable()", () => {
-        console.log(window);
-        let granted = sinon.createStubInstance(window.Notification, "requestPermission");
-        granted.returns('granted');
+        sinon.stub(window.Notification, 'requestPermission').returns('granted');
 
-        it("should return granted when push enable", () => {
-            assert.equal(WebPush.requestPushEnable() === 'granted');
+        return WebPush.requestPushEnable().then((permission) => {
+            assert(permission === 'granted');
         });
     });
 });
