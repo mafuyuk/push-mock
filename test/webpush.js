@@ -23,11 +23,11 @@ describe("webpush", () => {
         window = Object.assign({}, orgWindow);
     });
 
-    describe(".requestPushEnable()", () => {
-        sinon.stub(window.Notification, 'requestPermission').returns('granted');
-
-        return WebPush.requestPushEnable().then((permission) => {
-            assert(permission === 'granted');
-        });
-    });
+    // describe(".requestPushEnable()", () => {
+    //     sinon.stub(window.Notification, 'requestPermission').returns('granted');
+    //
+    //     return WebPush.requestPushEnable().then((permission) => {
+    //         assert(permission === 'granted');
+    //     });
+    // });
 });
