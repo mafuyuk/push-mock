@@ -30,7 +30,6 @@ export default class WebPush {
                 console.info(`Successfully registered ServiceWorker.: ${registration}`);
                 resolve(navigator.serviceWorker.ready);
             }).catch((err) => {
-                console.error(err);
                 reject(err);
             });
         });
@@ -38,7 +37,6 @@ export default class WebPush {
 
     // Push取得時のDEMO
     static pushDemo() {
-        console.log('DEMO');
         return new Notification(
             'タイトル',
             {
@@ -49,5 +47,18 @@ export default class WebPush {
                 },
             },
         );
+    }
+
+    static urlsafeB64toBin(urlsafe64) {
+        const b64 = urlsafe64.replace(/-/g, '+').replace(/_/g, '/');
+        const raw = window.atob(b64);
+
+        const result = new Uint8Array(raw.length);
+
+        for (let i = 0; i < raw; i += 1) {
+            result[i] = raw.charCodeAt(i);
+        }
+
+        return result;
     }
 }
