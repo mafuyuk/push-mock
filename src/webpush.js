@@ -27,8 +27,7 @@ export default class WebPush {
             navigator.serviceWorker.register('/sw.js', {
                 scope: '/',
             }).then((registration) => {
-                console.info(`Successfully registered ServiceWorker.: ${registration}`);
-                resolve(navigator.serviceWorker.ready);
+                resolve(registration.serviceWorker.ready);
             }).catch((err) => {
                 reject(err);
             });
