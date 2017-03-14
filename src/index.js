@@ -25,9 +25,9 @@ navigator.serviceWorker.register('./sw.js')
             '/api/push/subscribe',
             {
                 method: 'POST',
-                headers: new Headers({
+                headers: {
                     'Content-Type': 'application/json',
-                }),
+                },
                 body: subscriptionInfo,
             },
         );
