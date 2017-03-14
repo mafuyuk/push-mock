@@ -2,6 +2,5 @@
   "manifest_version": 2,
   "name": "mock",
   "short_name": "mock",
-  "display": "standalone",
-  "gcm_sender_id": ""
+  "display": "standalone"
 }
