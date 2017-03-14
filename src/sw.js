@@ -11,8 +11,6 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('push', (event) => {
-    console.log(`通知届きました: ${event}`);
-
     if (!event.data) {
         return;
     }
@@ -31,12 +29,8 @@ self.addEventListener('push', (event) => {
 });
 
 self.addEventListener('notificationclick', (event) => {
-    console.log(`通知されました: ${event}`);
-
     event.notification.close();
 
-    const notification = event.notification;
-    console.log(notification);
     const url = event.notification.url;
 
     event.waitUntil(this.clients.matchAll({
