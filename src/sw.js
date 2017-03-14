@@ -3,15 +3,15 @@
  */
 
 self.addEventListener('install', (event) => {
-    event.waitUntil(self.skipWaiting());
+    event.waitUntil(this.skipWaiting());
 });
 
 self.addEventListener('activate', (event) => {
-    event.waitUntil(self.clients.claim());
+    event.waitUntil(this.clients.claim());
 });
 
-self.addEventListener('click', (event) => {
-    console.log(`通知がクリックされました: ${event}`);
+self.addEventListener('push', (event) => {
+    console.log(`通知届きました: ${event}`);
 
     if (!event.data) {
         return;
@@ -31,7 +31,7 @@ self.addEventListener('click', (event) => {
 });
 
 self.addEventListener('notificationclick', (event) => {
-    console.log(`通知がクリック後の操作: ${event}`);
+    console.log(`通知されました: ${event}`);
 
     event.notification.close();
 
