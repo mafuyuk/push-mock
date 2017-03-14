@@ -49,13 +49,13 @@ export default class WebPush {
         );
     }
 
-    static urlsafeB64toBin(urlsafe64) {
-        const b64 = urlsafe64.replace(/-/g, '+').replace(/_/g, '/');
+    static urlsafeB64toBin(urlsafeb64) {
+        const b64 = urlsafeb64.replace(/-/g, '+').replace(/_/g, '/');
         const raw = window.atob(b64);
 
         const result = new Uint8Array(raw.length);
 
-        for (let i = 0; i < raw; i += 1) {
+        for (let i = 0; i < raw.length; i += 1) {
             result[i] = raw.charCodeAt(i);
         }
 
