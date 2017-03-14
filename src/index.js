@@ -10,7 +10,7 @@ function runWebPush() {
         .then(navigator.serviceWorker.ready)
         .then((result) => {
             // 通知購読要求
-            const serverKey = 'BIXmkQhnr0Nobbo1ESQLo0gdyEzi7Z7YCc5onF3eXKwIAoqkaucz9USV3gJmx2LA5qFooAtM21ZhDrOZHFfPew8';
+            const serverKey = 'BCb37fgHp86W2ilc4qPoDVbisxLw3WQ6mHM5kCcNiQC-5qb80uIYFW2QvZh4MW7PjE0JM2AjNigNBVgGl05LW5E';
             const serverKeyBin = WebPush.urlsafeB64toBin(serverKey);
 
             return result.pushManager.subscribe({
