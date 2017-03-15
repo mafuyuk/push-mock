@@ -37,7 +37,7 @@ function sendNotification() {
     webpush.sendNotification(subscription, payload);
 }
 
-app.get("/sendpush", function(){
+app.get('/sendpush', () => {
     console.log('sendpush');
     sendNotification();
 });

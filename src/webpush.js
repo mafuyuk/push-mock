@@ -5,14 +5,14 @@
 export default class WebPush {
     // 通知の可否
     static requestPushEnable() {
-        Notification.requestPermission()
+        return Notification.requestPermission()
             .then((permission) => {
                 // Notificaiton.permissionにも引数と同じ値が格納されている
                 if (permission !== 'granted') {
                     // 許可された場合
-                    Promise.reject('許可されませんでした');
+                    return Promise.reject('許可されませんでした');
                 }
-                Promise.resolve(permission);
+                return Promise.resolve(permission);
             });
     }
 
