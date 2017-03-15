@@ -24,7 +24,7 @@ export default class WebPush {
                 reject('ServiceWorker is not available');
             }
 
-            navigator.serviceWorker.register('/sw.js', {
+            navigator.serviceWorker.register('./sw.js', {
                 scope: '/',
             }).then((registration) => {
                 resolve(registration.serviceWorker.ready);
