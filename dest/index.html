@@ -6,8 +6,22 @@
 		<link rel="manifest" href="manifest.json">
 	</head>
 	<body>
+    	Hello World!!
+	    <input type="button" id="run" value="通知登録" />
+
 		<script type="text/javascript" src="bundle.js"></script>
-		Hello World!!
+	    <script>
+            console.log('RunWebPush');
+            document.getElementById('run').addEventListener("click", () => {
+                const ev = runWebPush();
+                ev.on('error', (e) => {
+                    console.log(`ERROR: ${e}`);
+                }).on('success', () => {
+                    console.log('SUCCESS');
+                });
+
+			});
+		</script>
 	</body>
 </html>
 
