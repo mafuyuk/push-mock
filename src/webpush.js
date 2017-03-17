@@ -18,17 +18,14 @@ export default class WebPush {
 
     // ServiceWorkerの登録
     static registerServiceWorker() {
-        return new Promise((resolve, reject) => {
+        return new Promise((reject) => {
             // ServiceWorker未実装のブラウザでは登録を中断する
             if (!('serviceWorker' in navigator)) {
                 reject('ServiceWorker is not available');
             }
 
-            navigator.serviceWorker.register('sw.js', {
-                scope: '/',
-            }).then((registration) => {
-                resolve(registration.serviceWorker.ready);
-            }).catch((err) => {
+            navigator.serviceWorker.register('sw.js', { scope: '/' },
+            ).catch((err) => {
                 reject(err);
             });
         });
